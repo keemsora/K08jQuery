@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ07Css.html</title>
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+<script>
+    $(document).ready(function(){
+        
+        /*
+        each() : 선택한 jQuery의 객체수만큼 자동으로 반복하는 메소드
+            아래는 div태그선택자를 통해 얻어온 개체가 2개이므로 
+            2번 반복하게 된다.
+        css() 
+            사용법1: 매개변수1,2통해 속성과 값을 설정한다.
+                엘리먼트선택.css("속성1", "값1").css(반복)
+            사용법2: JSON형태로 속성값을 설정한다.
+                엘리먼트선택.css({"속성1":"값1",....반복})
+        */
+        $('div').each(function(index){
+            $(this).css({'width':'500px', 'height':'200px'
+                ,'border':'solid red 2px'});
+        });
+
+        //태그선택자를 통해 button을 모두 선택한다.
+        $('button').click(function(){
+            //article 엘리먼트에 설정된 폰트크기를 가져와서 숫자로 변경한다.
+            var size=
+                parseInt($("#article1").css("fontSize"));
+            //버튼태그 사이의 텍스트를 얻어와서 확인
+            if($(this).text()=="기사늘리기"){
+                size += 2;//크기 증가
+            }
+            else{
+                size -= 2;//크기 감소
+            }
+            //위에서 계산된 값으로 폰트크기 지정함
+            $('div').css("fontSize", size+"px");
+        });
+    });
+</script>
+</head>
+<body>
+	<h2>css() 메소드</h2>
+	
+	<h3>뉴스기사 늘리기/줄이기</h3>
+	
+	<button id="big">기사늘리기</button>
+	<button id="small">기사줄이기</button>
+	
+	<div id="article1" style="font-size:12px;">
+		이낙연 더불어민주당 대표는 14일 신종 코로나바이러스 감염증(코로나19) 3차 대유행과 관련, "국민 누구나 손쉽게 신속진단키트로 1차 자가검사를 하고 그 결과에 따라 추가 정밀 검사를 받도록 하면 어떨지 논의할 시기가 됐다"고 제안했다. <br />
+		이 대표는 이날 오전 국회에서 열린 최고위원회의에서 "코로나 확산을 차단하기 위해 임시선별진료소를 새로 설치하는 대로 순차적으로 가동해 광범위한 검사를 시행해야 한다. 이 일은 오늘부터 이미 시작됐으나 그것만으로는 부족할지 모른다"며 이같이 말했다. <br />
+		정부가 임시 선별검사소를 통한 신속 항원검사법을 부분 도입하기로 한 데서 한발 더 나아가 전면 확대를 제안한 것이다. <br />
+	</div>	
+	<div id="article2" style="font-size:12px;">
+		그는 "현재 검체 체취 행위는 의료법상 어려우나 위기에는기존 체계를 뛰어넘는 비상한 접근이 필요하다"며 "신속진단키트를 통한 자가진단으로 기존 방역체계를 보완하는 방안을 당 정책위원회가 정부 및 전문가와 협의해달라"고 지시했다. <br />
+		여기도 뉴스기사가 나와요 <br />
+		여기도 뉴스기사가 나와요 <br />
+	</div>		
+</body>
+</html>
